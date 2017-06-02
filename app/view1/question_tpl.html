@@ -1,13 +1,18 @@
-<div class="row">
-    <div class="col-sm-6 form-group">
-            <!--<span ng-class="{'correct': (answer === number.correct), 'wrong': (answer !== number.correct)}"></span>-->
-            <!--</div>-->
-        <div ng-show="showAlertFlag" style="display: inline;">
-            <span ng-class="{'correct': (answer === number.correct), 'wrong': (answer !== number.correct)}"></span>
-        </div>
-        <h2 style="display: inline">{{ number.num1 }} {{operator}} {{ number.num2 }} = </h2>
-        <div>
-            <input class="form-control input-lg" id="inputlg" type="number" ng-model="answer" style="display: inline;">
-        </div>
+
+<div class="col-sm-6 form-group" style="margin-bottom: 30px;">
+    <div class="inline" ng-show="showAlertFlag">
+        <span ng-class="{
+                'correct': (answer === number.correct && answer2 == number.remainder),
+                'wrong': (answer !== number.correct || answer2 != number.remainder)
+            }">
+        </span>
     </div>
+    <h4 class="inline" style="margin-right:10px;">{{$index+1}})</h4>
+    <h2 class="inline">{{ number.num1 }} {{operator}} {{ number.num2 }} = </h2>
+    <input class="form-control input-lg inline" type="number" ng-model="answer" style="width: 120px;">
+    <span ng-show="isTab4">
+	    <h2 class="inline">⋯</h2>
+		<input class="form-control input-lg inline" type="number" ng-model="answer2" style="width: 80px;">
+    </span>
+	{{number.correct}}
 </div>
